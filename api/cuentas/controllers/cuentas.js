@@ -45,9 +45,12 @@ module.exports = {
             const hob = sanitizeEntity(hobby, {
                 model: strapi.models.hobbies,
             });
+
+            delete hob.created_at;
+            delete hob.updated_at;
            
 
-            return hob.title;
+            return hob;
         });
         
 

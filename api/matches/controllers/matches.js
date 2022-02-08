@@ -31,8 +31,7 @@ module.exports = {
             const match = sanitizeEntity(entity, {
                 model: strapi.models.cuentas,
             });
-
-            delete match.id;
+            
             delete match.matches;
             delete match.solicitudes;
             delete match.bloqueados;

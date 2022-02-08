@@ -33,7 +33,7 @@ module.exports = {
                 model: strapi.models.cuentas,
             });
 
-            delete blocked.id;
+            
             delete blocked.matches;
             delete blocked.solicitudes;
             delete blocked.bloqueados;
