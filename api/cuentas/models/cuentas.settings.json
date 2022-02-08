@@ -68,6 +68,10 @@
     "bloqueados": {
       "via": "cuenta",
       "model": "bloqueados"
+    },
+    "nombre": {
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -12,8 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "cuenta": {
-      "model": "cuentas",
-      "via": "solicitudes"
+      "via": "solicitudes",
+      "model": "cuentas"
     },
     "solicitudes": {
       "collection": "cuentas"

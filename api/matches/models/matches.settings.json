@@ -12,8 +12,8 @@
   "pluginOptions": {},
   "attributes": {
     "cuenta": {
-      "model": "cuentas",
-      "via": "matches"
+      "via": "matches",
+      "model": "cuentas"
     },
     "matches": {
       "collection": "cuentas"
