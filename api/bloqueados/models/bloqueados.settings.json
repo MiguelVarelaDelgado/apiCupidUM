@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bloqueados",
+  "info": {
+    "name": "Bloqueados"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cuenta": {
+      "model": "cuentas",
+      "via": "bloqueados"
+    },
+    "bloqueados": {
+      "collection": "bloqueados"
+    }
+  }
+}

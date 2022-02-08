@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "facultades",
+  "info": {
+    "name": "Facultades"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre_completo": {
+      "type": "string",
+      "unique": true
+    },
+    "acronimo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

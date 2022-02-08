@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "matches",
+  "info": {
+    "name": "Matches"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cuenta": {
+      "model": "cuentas",
+      "via": "matches"
+    },
+    "matches": {
+      "collection": "cuentas"
+    }
+  }
+}

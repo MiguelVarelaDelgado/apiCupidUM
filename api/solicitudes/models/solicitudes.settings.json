@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "solicitudes",
+  "info": {
+    "name": "Solicitudes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cuenta": {
+      "model": "cuentas",
+      "via": "solicitudes"
+    },
+    "solicitudes": {
+      "collection": "cuentas"
+    }
+  }
+}

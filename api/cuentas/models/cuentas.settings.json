@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cuentas",
+  "info": {
+    "name": "Cuentas",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "UID": {
+      "type": "uid",
+      "required": true
+    },
+    "genero": {
+      "type": "enumeration",
+      "enum": [
+        "Masculino",
+        "Femenino"
+      ],
+      "required": true
+    },
+    "objetivo": {
+      "type": "enumeration",
+      "enum": [
+        "Amistad",
+        "Relacion"
+      ]
+    },
+    "fecha_nacimiento": {
+      "type": "date",
+      "required": true
+    },
+    "edad": {
+      "type": "integer",
+      "required": true
+    },
+    "altura": {
+      "type": "decimal"
+    },
+    "peso": {
+      "type": "decimal"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "facultad": {
+      "model": "facultades"
+    },
+    "hobbies": {
+      "collection": "hobbies"
+    },
+    "matches": {
+      "via": "cuenta",
+      "model": "matches"
+    },
+    "solicitudes": {
+      "via": "cuenta",
+      "model": "solicitudes"
+    },
+    "bloqueados": {
+      "via": "cuenta",
+      "model": "bloqueados"
+    }
+  }
+}

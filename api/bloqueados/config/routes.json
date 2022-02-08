@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bloqueados",
+      "handler": "bloqueados.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bloqueados/count",
+      "handler": "bloqueados.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bloqueados/:id",
+      "handler": "bloqueados.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bloqueados",
+      "handler": "bloqueados.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bloqueados/:id",
+      "handler": "bloqueados.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bloqueados/:id",
+      "handler": "bloqueados.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
