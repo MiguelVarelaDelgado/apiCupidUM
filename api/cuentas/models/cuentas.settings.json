@@ -16,6 +16,10 @@
       "type": "uid",
       "required": true
     },
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
     "genero": {
       "type": "enumeration",
       "enum": [
@@ -68,10 +72,6 @@
     "bloqueados": {
       "via": "cuenta",
       "model": "bloqueados"
-    },
-    "nombre": {
-      "type": "string",
-      "required": true
     }
   }
 }
