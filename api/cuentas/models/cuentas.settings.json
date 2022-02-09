@@ -72,6 +72,10 @@
     "bloqueados": {
       "via": "cuenta",
       "model": "bloqueados"
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
     }
   }
 }
