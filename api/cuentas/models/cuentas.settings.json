@@ -20,6 +20,10 @@
       "type": "string",
       "required": true
     },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
     "genero": {
       "type": "enumeration",
       "enum": [
@@ -60,22 +64,6 @@
     },
     "hobbies": {
       "collection": "hobbies"
-    },
-    "matches": {
-      "via": "cuenta",
-      "model": "matches"
-    },
-    "solicitudes": {
-      "via": "cuenta",
-      "model": "solicitudes"
-    },
-    "bloqueados": {
-      "via": "cuenta",
-      "model": "bloqueados"
-    },
-    "descripcion": {
-      "type": "text",
-      "required": true
     }
   }
 }

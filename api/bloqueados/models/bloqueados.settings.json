@@ -13,8 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "cuenta": {
-      "via": "bloqueados",
-      "model": "cuentas"
+      "type": "uid",
+      "required": true
     },
     "bloqueados": {
       "collection": "cuentas"

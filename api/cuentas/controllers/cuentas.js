@@ -31,10 +31,6 @@ module.exports = {
         });
 
         // deletes the unneeded data
-        delete cuenta.matches;
-        delete cuenta.solicitudes;
-        delete cuenta.bloqueados;
-        delete cuenta.test;
         delete cuenta.created_by;
         delete cuenta.updated_by;
         delete cuenta.created_at;
@@ -68,4 +64,19 @@ module.exports = {
         //returns the new response
         return cuenta;
     },
+    create: async ctx => { 
+        let entity;
+        let cuenta = sanitizeEntity(ctx.request.body, { model: strapi.models.cuentas });
+
+        let matchesMap = { "cuenta": cuenta.UID, "matches": [] };  
+        let requestMap = { "cuenta": cuenta.UID, "solicitudes": [] };
+        let blocksMap = { "cuenta": cuenta.UID, "bloqueados": [] };
+
+        await strapi.services.matches.create(matchesMap); 
+        await strapi.services.solicitudes.create(requestMap); 
+        await strapi.services.bloqueados.create(blocksMap); 
+        
+        entity = await strapi.services.cuentas.create(ctx.request.body);
+        return sanitizeEntity(entity, { model: strapi.models.cuentas });
+    }
 };

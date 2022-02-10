@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "solicitudes",
   "info": {
-    "name": "Solicitudes"
+    "name": "Solicitudes",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -12,8 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "cuenta": {
-      "via": "solicitudes",
-      "model": "cuentas"
+      "type": "uid",
+      "required": true
     },
     "solicitudes": {
       "collection": "cuentas"

@@ -16,7 +16,7 @@ module.exports = {
         // Filter entries by UID requested
         let entity;
         const key = ctx.params.id;
-        entities = entities.filter(entity => entity["cuenta"]["UID"] == key);
+        entities = entities.filter(entity => entity["cuenta"] == key);
         entity = entities[0];
         
          // parses the response to model
