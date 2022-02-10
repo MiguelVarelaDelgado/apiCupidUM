@@ -44,4 +44,24 @@ module.exports = {
 
         return solicitudModel.solicitudes;
     },
+    update: async ctx => { 
+        // Fetches all entries
+        let entities
+        entities = await strapi.services.solicitudes.find("");
+       
+
+        // Filter entries by UID requested
+        let entity;
+        const key = ctx.params.id;
+        entities = entities.filter(entity => entity["cuenta"] == key);
+       entity = entities[0];
+       let id = entity["id"]
+
+       let request = {"cuenta": key, "solicitudes": ctx.request.body};
+       
+       entity = await strapi.services.solicitudes.update({ id }, request);
+       
+
+       return entity;
+   }
 };

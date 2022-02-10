@@ -48,4 +48,24 @@ module.exports = {
 
         return bloqueadosModel.bloqueados;
     },
+    update: async ctx => { 
+         // Fetches all entries
+         let entities
+         entities = await strapi.services.bloqueados.find("");
+        
+ 
+         // Filter entries by UID requested
+         let entity;
+         const key = ctx.params.id;
+         entities = entities.filter(entity => entity["cuenta"] == key);
+        entity = entities[0];
+        let id = entity["id"]
+
+        let request = {"cuenta": key, "bloqueados": ctx.request.body};
+        
+        entity = await strapi.services.bloqueados.update({ id }, request);
+        
+
+        return entity;
+    }
 };
