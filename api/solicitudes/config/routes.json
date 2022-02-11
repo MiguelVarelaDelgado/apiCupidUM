@@ -41,6 +41,22 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/solicitudes/:id/add",
+      "handler": "solicitudes.add",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/solicitudes/:id/editList",
+      "handler": "solicitudes.editList",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/solicitudes/:id",
       "handler": "solicitudes.delete",

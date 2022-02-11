@@ -44,7 +44,7 @@ module.exports = {
 
         return solicitudModel.solicitudes;
     },
-    update: async ctx => { 
+    add: async ctx => { 
         // Fetches all entries
         let entities
         entities = await strapi.services.solicitudes.find("");
@@ -55,10 +55,51 @@ module.exports = {
         const key = ctx.params.id;
         entities = entities.filter(entity => entity["cuenta"] == key);
        entity = entities[0];
-       let id = entity["id"]
+       let id = entity["id"];
+
+       if(ctx.request.body["id"] == null){
+            return ctx.badRequest('El campo de id es nulo', { campo: 'id' });
+       }
+
+       const solicitudModel = sanitizeEntity(entity, {
+        model: strapi.models.solicitudes,
+     });
+
+
+     const json = sanitizeEntity(ctx.request.body, {
+        model: strapi.models.cuentas,
+     });
+
+
+
+     solicitudModel.solicitudes = [... solicitudModel.solicitudes, json  ]
+
+    
+
+       let request = {"cuenta": key, "solicitudes": solicitudModel.solicitudes};
+       
+       entity = await strapi.services.solicitudes.update({ id }, request);
+       
+
+       return entity;
+   },
+   editList: async ctx => { 
+       
+        if(JSON.stringify(ctx.request.body) == "{}"|| ctx.request.body === null){
+            return ctx.badRequest('El cuerpo de la petición viene vacía');
+        }
+s
+        // Fetches all entries
+        let entities
+        entities = await strapi.services.solicitudes.find("");
+
+        const key = ctx.params.id;
+        entities = entities.filter(entity => entity["cuenta"] == key);
+       let entity = entities[0];
+       let id = entity["id"];
 
        let request = {"cuenta": key, "solicitudes": ctx.request.body};
-       
+
        entity = await strapi.services.solicitudes.update({ id }, request);
        
 

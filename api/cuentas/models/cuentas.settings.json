@@ -37,7 +37,8 @@
       "enum": [
         "Amistad",
         "Relacion"
-      ]
+      ],
+      "required": true
     },
     "fecha_nacimiento": {
       "type": "date",
@@ -48,7 +49,8 @@
       "required": true
     },
     "altura": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": false
     },
     "peso": {
       "type": "decimal"

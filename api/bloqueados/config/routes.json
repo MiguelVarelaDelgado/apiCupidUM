@@ -41,6 +41,22 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/bloqueados/:id/add",
+      "handler": "bloqueados.add",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bloqueados/:id/editList",
+      "handler": "bloqueados.editList",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/bloqueados/:id",
       "handler": "bloqueados.delete",

@@ -41,6 +41,22 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/matches/:id/add",
+      "handler": "matches.add",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/matches/:id/editList",
+      "handler": "matches.editList",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/matches/:id",
       "handler": "matches.delete",

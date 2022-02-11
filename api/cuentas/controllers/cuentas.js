@@ -1,5 +1,6 @@
 'use strict';
 
+const { errors } = require('strapi-plugin-upload');
 const {sanitizeEntity } = require('strapi-utils');
 
 /**
@@ -48,8 +49,11 @@ module.exports = {
 
             return hob;
         });
-        
 
+
+        // No utilizar o condicionar los campos nulos para errores del sistema
+        
+        if(entity["facultad"]!=null){
         //parses the faculty
         const facultad = sanitizeEntity(cuenta.facultad, {
             model: strapi.models.facultades,
@@ -57,10 +61,12 @@ module.exports = {
 
         delete facultad.created_at;
         delete facultad.updated_at;
-        delete facultad.id;
+        
 
         cuenta.facultad = facultad;
-
+        }else{
+            return ctx.badRequest('El campo de facultad es nula', { campo: 'facultad' });
+        }
         //returns the new response
         return cuenta;
     },
@@ -71,12 +77,16 @@ module.exports = {
         let matchesMap = { "cuenta": cuenta.UID, "matches": [] };  
         let requestMap = { "cuenta": cuenta.UID, "solicitudes": [] };
         let blocksMap = { "cuenta": cuenta.UID, "bloqueados": [] };
+        if(ctx.request.body["facultad"]!=null){
+        entity = await strapi.services.cuentas.create(ctx.request.body);
 
         await strapi.services.matches.create(matchesMap); 
         await strapi.services.solicitudes.create(requestMap); 
         await strapi.services.bloqueados.create(blocksMap); 
-        
-        entity = await strapi.services.cuentas.create(ctx.request.body);
+                
         return sanitizeEntity(entity, { model: strapi.models.cuentas });
+        }else{
+            return ctx.badRequest('El campo de facultad es nula', { campo: 'facultad' });
+        }
     }
 };
