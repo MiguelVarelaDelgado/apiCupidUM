@@ -24,7 +24,14 @@
         "policies": []
       }
     },
-   
+    {
+      "method": "GET",
+      "path": "/cuentas/:id/exist",
+      "handler": "cuentas.exist",
+      "config": {
+        "policies": []
+      }
+    },
     {
       "method": "POST",
       "path": "/cuentas",

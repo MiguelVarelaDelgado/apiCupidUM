@@ -66,6 +66,10 @@
     },
     "hobbies": {
       "collection": "hobbies"
+    },
+    "image": {
+      "type": "text",
+      "required": true
     }
   }
 }

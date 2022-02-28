@@ -88,5 +88,23 @@ module.exports = {
         }else{
             return ctx.badRequest('El campo de facultad es nula', { campo: 'facultad' });
         }
-    }
+    },
+
+    exist: async ctx => {
+        // Fetches all entries
+        let entities
+        entities = await strapi.services.cuentas.find("");
+
+        // Filter entries by UID requested
+        let entity;
+        const key = ctx.params.id;
+        entities = entities.filter(entity => entity["UID"] == key);
+        entity = entities[0];
+        
+        if(entity!=null){
+            return true;
+        }else return false;
+
+
+    },
 };
