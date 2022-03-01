@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "hobbies",
   "info": {
-    "name": "Hobbies"
+    "name": "Hobbies",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,10 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "titulo": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
+    },
+    "icono": {
+      "type": "string",
+      "required": true
     }
   }
 }
