@@ -19,6 +19,10 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "carreras": {
+      "via": "facultad",
+      "collection": "carreras"
     }
   }
 }

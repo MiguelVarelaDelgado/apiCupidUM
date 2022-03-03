@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carreras",
+  "info": {
+    "name": "Carreras",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "facultad": {
+      "model": "facultades",
+      "via": "carreras"
+    },
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "nombreCorto": {
+      "type": "string"
+    }
+  }
+}
