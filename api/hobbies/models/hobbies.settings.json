@@ -14,7 +14,7 @@
   "attributes": {
     "titulo": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": false
     },
     "icono": {
