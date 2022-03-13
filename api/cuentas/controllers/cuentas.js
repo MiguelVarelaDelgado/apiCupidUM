@@ -107,4 +107,21 @@ module.exports = {
 
 
     },
+    update: async ctx => {
+        // Fetches all entries
+        let entities
+        entities = await strapi.services.cuentas.find("");
+
+        // Filter entries by UID requested
+        let entity;
+        const key = ctx.params.id;
+        entities = entities.filter(entity => entity["UID"] == key);
+        entity = entities[0];
+
+        const id = entity["id"];
+        
+        const response = await strapi.services.cuentas.update({ id }, ctx.request.body);
+
+        return sanitizeEntity(response, { model: strapi.models.cuentas });
+    },
 };
