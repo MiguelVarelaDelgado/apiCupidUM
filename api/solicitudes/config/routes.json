@@ -42,7 +42,7 @@
     },
     {
       "method": "PUT",
-      "path": "/solicitudes/:id/add",
+      "path": "/solicitudes/add/:id",
       "handler": "solicitudes.add",
       "config": {
         "policies": []
@@ -50,7 +50,7 @@
     },
     {
       "method": "PUT",
-      "path": "/solicitudes/:id/editList",
+      "path": "/solicitudes/editList/:id",
       "handler": "solicitudes.editList",
       "config": {
         "policies": []
