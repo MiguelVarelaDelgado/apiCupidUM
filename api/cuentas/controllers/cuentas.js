@@ -77,13 +77,16 @@ module.exports = {
         let matchesMap = { "cuenta": cuenta.UID, "matches": [] };  
         let requestMap = { "cuenta": cuenta.UID, "solicitudes": [] };
         let blocksMap = { "cuenta": cuenta.UID, "bloqueados": [] };
+        let esperaMap = { "cuenta": cuenta.UID, "espera": [] };
+
         if(ctx.request.body["facultad"]!=null){
         entity = await strapi.services.cuentas.create(ctx.request.body);
 
         await strapi.services.matches.create(matchesMap); 
         await strapi.services.solicitudes.create(requestMap); 
         await strapi.services.bloqueados.create(blocksMap); 
-                
+        await strapi.services.espera.create(esperaMap); 
+        
         return sanitizeEntity(entity, { model: strapi.models.cuentas });
         }else{
             return ctx.badRequest('El campo de facultad es nula', { campo: 'facultad' });
@@ -108,13 +111,6 @@ module.exports = {
 
     },
     update: async ctx => {
-        // Fetches all entries
-        let entities
-        entities = await strapi.services.cuentas.find("");
-
-        // Filter entries by UID requested
-        let entity;
-        const key = ctx.params.id;
         entities = entities.filter(entity => entity["UID"] == key);
         entity = entities[0];
 
@@ -123,5 +119,57 @@ module.exports = {
         const response = await strapi.services.cuentas.update({ id }, ctx.request.body);
 
         return sanitizeEntity(response, { model: strapi.models.cuentas });
+    },
+
+    findMatches: async ctx => {
+        // Agarrar el UID
+        // Fetches all entries
+        let entities
+        entities = await strapi.services.cuentas.find("");
+
+        // Filter entries by UID requested
+        let entity;
+        const key = ctx.params.id;
+        entity = entities.filter(entity => entity["UID"] == key)[0];
+         // parses the response to model
+         const cuenta = sanitizeEntity(entity, {
+            model: strapi.models.cuentas,
+        });
+
+        if(cuenta.objetivo=="Relacion"){
+            let generoOb= cuenta.genero=="Masculino"?"Femenino":"Masculino";
+            entities=entities.filter(entity => entity["objetivo"] == "Relacion" && entity["genero"] ==generoOb);
+        }else{
+            entities=entities.filter(entity => entity["UID"] != key && entity["objetivo"] != "Relacion");
+        }
+
+        let bloqueados=await strapi.services.bloqueados.find("");
+        bloqueados=bloqueados.filter(entity => entity["cuenta"] == key)[0];
+        
+        
+
+
+        let solicitudes=await strapi.services.solicitudes.find("");
+        solicitudes=solicitudes.filter(entity => entity["cuenta"] == key)[0];
+
+        let matches=await strapi.services.matches.find("");
+        matches=matches.filter(entity => entity["cuenta"] == key)[0];
+        // parses the response to model
+        const b = sanitizeEntity(bloqueados, {
+            model: strapi.models.bloqueados,
+        });
+        // parses the response to model
+        const s = sanitizeEntity(solicitudes, {
+            model: strapi.models.solicitudes,
+        });
+        // parses the response to model
+        const m = sanitizeEntity(matches, {
+            model: strapi.models.matches,
+        });
+        entities=entities.filter(entity => !b.bloqueados.find(e=>e["UID"]===entity["UID"]));
+        entities=entities.filter(entity => !s.solicitudes.find(e=>e["UID"]===entity["UID"]));
+        entities=entities.filter(entity => !m.matches.find(e=>e["UID"]===entity["UID"]));
+
+        return entities;
     },
 };

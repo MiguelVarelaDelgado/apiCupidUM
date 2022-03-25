@@ -48,24 +48,27 @@ module.exports = {
         // Fetches all entries
         let entities
         entities = await strapi.services.solicitudes.find("");
-       
+        
 
         // Filter entries by UID requested
         let entity;
+        
         const key = ctx.params.id;
         entities = entities.filter(entity => entity["cuenta"] == key);
        entity = entities[0];
+       
        let id = entity["id"];
-
+       
        if(ctx.request.body["id"] == null){
             return ctx.badRequest('El campo de id es nulo', { campo: 'id' });
        }
+      
 
        const solicitudModel = sanitizeEntity(entity, {
         model: strapi.models.solicitudes,
      });
 
-
+    
      const json = sanitizeEntity(ctx.request.body, {
         model: strapi.models.cuentas,
      });
@@ -80,8 +83,8 @@ module.exports = {
        
        entity = await strapi.services.solicitudes.update({ id }, request);
        
-
        return entity;
+       
    },
    editList: async ctx => { 
        

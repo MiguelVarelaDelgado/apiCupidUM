@@ -70,6 +70,10 @@
     "image": {
       "type": "text",
       "required": true
+    },
+    "apellidos": {
+      "type": "string",
+      "required": true
     }
   }
 }

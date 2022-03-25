@@ -26,8 +26,16 @@
     },
     {
       "method": "GET",
-      "path": "/cuentas/:id/exist",
+      "path": "/cuentas/exist/:id",
       "handler": "cuentas.exist",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cuentas/findMatches/:id",
+      "handler": "cuentas.findMatches",
       "config": {
         "policies": []
       }

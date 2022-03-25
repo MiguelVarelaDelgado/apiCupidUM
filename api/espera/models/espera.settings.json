@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "esperas",
+  "info": {
+    "name": "Espera",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cuenta": {
+      "type": "uid",
+      "required": true
+    },
+    "espera": {
+      "collection": "cuentas"
+    }
+  }
+}

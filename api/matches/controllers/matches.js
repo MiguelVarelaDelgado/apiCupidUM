@@ -90,7 +90,7 @@ module.exports = {
         if(JSON.stringify(ctx.request.body) == "{}"|| ctx.request.body === null){
             return ctx.badRequest('El cuerpo de la petición viene vacía');
         }
-s
+
         // Fetches all entries
         let entities
         entities = await strapi.services.matches.find("");
