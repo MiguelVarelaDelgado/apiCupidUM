@@ -154,7 +154,7 @@ module.exports = {
         bloqueados=bloqueados.filter(entity => entity["cuenta"] == key)[0];
         
         
-
+        
 
         let esperas=await strapi.services.espera.find("");
         esperas=esperas.filter(entity => entity["cuenta"] == key)[0];
@@ -176,6 +176,7 @@ module.exports = {
         entities=entities.filter(entity => !b.bloqueados.find(e=>e["UID"]===entity["UID"]));
         entities=entities.filter(entity => !e.espera.find(e=>e["UID"]===entity["UID"]));
         entities=entities.filter(entity => !m.matches.find(e=>e["UID"]===entity["UID"]));
+        entities=entities.filter(entity => entity["cluster"]===cuenta.cluster);
 
         return entities;
     },
