@@ -111,6 +111,13 @@ module.exports = {
 
     },
     update: async ctx => {
+        // Fetches all entries
+        let entities
+        entities = await strapi.services.cuentas.find("");
+
+        // Filter entries by UID requested
+        let entity;
+        const key = ctx.params.id;
         entities = entities.filter(entity => entity["UID"] == key);
         entity = entities[0];
 
@@ -149,8 +156,8 @@ module.exports = {
         
 
 
-        let solicitudes=await strapi.services.solicitudes.find("");
-        solicitudes=solicitudes.filter(entity => entity["cuenta"] == key)[0];
+        let esperas=await strapi.services.espera.find("");
+        esperas=esperas.filter(entity => entity["cuenta"] == key)[0];
 
         let matches=await strapi.services.matches.find("");
         matches=matches.filter(entity => entity["cuenta"] == key)[0];
@@ -159,15 +166,15 @@ module.exports = {
             model: strapi.models.bloqueados,
         });
         // parses the response to model
-        const s = sanitizeEntity(solicitudes, {
-            model: strapi.models.solicitudes,
+        const e = sanitizeEntity(esperas, {
+            model: strapi.models.espera,
         });
         // parses the response to model
         const m = sanitizeEntity(matches, {
             model: strapi.models.matches,
         });
         entities=entities.filter(entity => !b.bloqueados.find(e=>e["UID"]===entity["UID"]));
-        entities=entities.filter(entity => !s.solicitudes.find(e=>e["UID"]===entity["UID"]));
+        entities=entities.filter(entity => !e.espera.find(e=>e["UID"]===entity["UID"]));
         entities=entities.filter(entity => !m.matches.find(e=>e["UID"]===entity["UID"]));
 
         return entities;

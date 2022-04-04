@@ -41,6 +41,22 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/esperas/add/:id",
+      "handler": "espera.add",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/esperas/editList/:id",
+      "handler": "espera.editList",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/esperas/:id",
       "handler": "espera.delete",

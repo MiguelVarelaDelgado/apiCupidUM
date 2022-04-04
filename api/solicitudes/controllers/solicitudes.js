@@ -13,6 +13,8 @@ module.exports = {
         let entities
         entities = await strapi.services.solicitudes.find("");
 
+
+
         // Filter entries by UID requested
         let entity;
         const key = ctx.params.id;
@@ -36,6 +38,21 @@ module.exports = {
             delete solicitud.test;
             delete solicitud.created_at;
             delete solicitud.updated_at;
+            delete solicitud.image;
+            delete solicitud.descripcion;
+            delete solicitud.fecha_nacimiento;
+            delete solicitud.edad;
+            delete solicitud.altura;
+            delete solicitud.peso;
+            delete solicitud.telefono;
+            delete solicitud.instagram;
+            delete solicitud.facultad;
+            delete solicitud.genero;
+            delete solicitud.objetivo;
+
+
+
+
            
 
             return solicitud;
@@ -91,7 +108,7 @@ module.exports = {
         if(JSON.stringify(ctx.request.body) == "{}"|| ctx.request.body === null){
             return ctx.badRequest('El cuerpo de la petición viene vacía');
         }
-s
+
         // Fetches all entries
         let entities
         entities = await strapi.services.solicitudes.find("");
