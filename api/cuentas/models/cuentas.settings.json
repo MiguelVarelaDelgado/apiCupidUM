@@ -74,6 +74,14 @@
     "apellidos": {
       "type": "string",
       "required": true
+    },
+    "cluster": {
+      "required": true,
+      "default": -1,
+      "type": "integer",
+      "max": 6,
+      "min": -1,
+      "private": false
     }
   }
 }
